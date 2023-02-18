@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+        <title>Document</title>
+        
+        <style>
+        .table{
+        background-color:skyblue;
+        text-align:left;
+        }
+    
+        .table1{  
+        background-color:skyblue;
+        text-align:left;
+        }
+        </style>
+    </head>
+
+    <body bgcolor="skyblue">
+        <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="table">
+                <div class="container">
+                    <div class="row">
+                      	
+                      		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>			
+                      		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><br><h1 style="color:black;">Predictive analysis</h1></div>
+                      		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>		
+                            <br>
+                     </div>
+                     
+                     <div class="row"> 		                      		
+                      		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><br><h4 style="color:black;">Year<h4></div>
+                      		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><br><input id="first" name="Year" type="number "></div>
+                            <br><br>
+                    </div>
+                    
+                    <div class="row">        
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><h4 style="color:black;">What's the Showroom Price?(In lakhs)</h4></div>
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><input id="second" name="Present_Price" required="required"></div>
+                            <br><br>
+                    </div>
+                    
+                    <div class="row">
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><h4 style="color:black;">How Many Kilometers Drived?</h4></div>
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><input id="third" name="Kms_Driven" required="required"></div>
+                          	<br><br>
+                    </div>
+                    
+                    <div class="row">
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><h4 style="color:black;">How much owners previously had the car(0 or 1 or 3)?</h4></div>
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><input id="fourth" name="Owner" required="required"></div>
+                          	<br><br>
+                    </div>
+                    
+                    <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><h4 style="color:black;">What Is the Fuel type?</h4></div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br>
+                            <select name="Fuel_Type_Petrol" id="fuel" required="required">
+                                <option value="Petrol">Petrol</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="CNG">CNG</option>
+                            </select>
+                      		</div>
+                          	<br><br>
+                    </div>
+                    
+                    <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><h4 style="color:black;">Are you A Dealer or Individual</h4></div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br>
+                      		<select name="Seller_Type_Individual" id="resea" required="required">
+                                <option value="Dealer">Dealer</option>
+                                <option value="Individual">Individual</option>
+                            </select>
+                      		</div>
+                          	<br><br>
+                    </div>
+                    
+                    <div class="row">
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br><h4 style="color:black;">Transmission type</h4></div>
+                      		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><br>
+                      		<select name="Transmission_Mannual" id="research" required="required">
+                                <option value="Mannual">Manual Car</option>
+                                <option value="Automatic">Automatic Car</option>
+                            </select>
+                      		</div>
+                          	<br><br>
+                    </div>
+                    
+                    <div class="row">
+                      		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+                      		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><br><button id="sub" type="submit ">Calculate Selling Price</button></div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+                      		
+                    </div>
+                    </div>
+              	<div>
+        </form>
+        <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>			
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><br><h3 style="color:black;">{{ prediction_text }}</h3></div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>		
+        <br><br>
+        </div>
+        </div>
+       
+    </body>
+</html>
